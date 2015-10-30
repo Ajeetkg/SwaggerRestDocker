@@ -1,6 +1,4 @@
-package services;
-
-import static org.junit.Assert.*;
+package controller;
 
 /**
  * Created by agupta2 on 10/28/15.

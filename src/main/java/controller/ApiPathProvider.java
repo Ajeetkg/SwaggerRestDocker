@@ -1,4 +1,4 @@
-package services;
+package controller;
 
 import com.mangofactory.swagger.core.SwaggerPathProvider;
 import org.springframework.beans.factory.annotation.Autowired;

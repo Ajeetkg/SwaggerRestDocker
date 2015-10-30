@@ -1,9 +1,9 @@
-package services;
+package controller;
 
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
-import domain.ConceptModel;
+import model.ConceptModel;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
