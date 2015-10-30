@@ -1,8 +1,5 @@
 package domain;
 
-
-
-
 public class ConceptModel {
 
     private int id;
