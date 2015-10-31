@@ -3,7 +3,7 @@ package controller;
 /**
  * Created by agupta2 on 10/28/15.
  */
-public class ConceptModelControllerTest {
+public class OntologyControllerTest {
 
     @org.junit.Before
     public void setUp() throws Exception {

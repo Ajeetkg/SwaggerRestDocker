@@ -1,14 +1,14 @@
 package model;
 
-public class ConceptModel {
+public class OntologyNode {
 
     private int id;
     private String content;
 
-    public ConceptModel() {
+    public OntologyNode() {
     }
 
-    public ConceptModel(int id, String content) {
+    public OntologyNode(int id, String content) {
         this.id = id;
         this.content = content;
     }
