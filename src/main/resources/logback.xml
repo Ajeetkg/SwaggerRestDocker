@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+  <property name="LOG_FILE" value="logs/%d{MM-yyyy,aux}/application.%d{MM-dd-yyyy}.log"/>
+  <property name="LOG_FILE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <layout class="ch.qos.logback.classic.PatternLayout">
       <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
@@ -8,9 +11,19 @@
   </appender>
   
   <logger name="com.illumina" level="TRACE"/>
-  
 
-  <root level="debug">
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <encoder>
+      <pattern>${LOG_FILE_PATTERN}</pattern>
+    </encoder>
+    <file>/tmp/logs/ontology.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_FILE}</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+
+  <root level="info">
     <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
   </root>
 </configuration>
