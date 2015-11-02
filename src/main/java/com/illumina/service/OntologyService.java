@@ -1,6 +1,6 @@
-package service;
+package com.illumina.service;
 
-import model.OntologyNode;
+import com.illumina.model.OntologyNode;
 
 import java.util.List;
 

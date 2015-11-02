@@ -1,4 +1,4 @@
-package util;
+package com.illumina.util;
 
 /**
  * Created by agupta2 on 10/30/15.

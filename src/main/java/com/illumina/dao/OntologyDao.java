@@ -1,7 +1,7 @@
-package dao;
+package com.illumina.dao;
 
 
-import model.OntologyNode;
+import com.illumina.model.OntologyNode;
 
 import java.util.List;
 

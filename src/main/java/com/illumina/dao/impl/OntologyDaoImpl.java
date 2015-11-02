@@ -1,7 +1,7 @@
-package dao.impl;
+package com.illumina.dao.impl;
 
-import dao.OntologyDao;
-import model.OntologyNode;
+import com.illumina.dao.OntologyDao;
+import com.illumina.model.OntologyNode;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by agupta2 on 10/30/15.
  */
 @Repository
-public class OntologyDaoImpl implements OntologyDao{
+public class OntologyDaoImpl implements OntologyDao {
     private final AtomicInteger counter = new AtomicInteger();
     private Map<Integer, OntologyNode> conceptMap = new ConcurrentHashMap<Integer, OntologyNode>();
 

@@ -1,10 +1,10 @@
-package service.impl;
+package com.illumina.service.impl;
 
-import dao.OntologyDao;
-import model.OntologyNode;
+import com.illumina.dao.OntologyDao;
+import com.illumina.model.OntologyNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import service.OntologyService;
+import com.illumina.service.OntologyService;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
-package controller;
+package com.illumina.controller;
 
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
-import model.OntologyNode;
+import com.illumina.model.OntologyNode;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.OntologyService;
+import com.illumina.service.OntologyService;
 
 import java.util.List;
 
