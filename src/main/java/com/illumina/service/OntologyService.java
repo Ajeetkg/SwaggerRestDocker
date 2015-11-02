@@ -1,6 +1,7 @@
 package com.illumina.service;
 
 import com.illumina.model.OntologyNode;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

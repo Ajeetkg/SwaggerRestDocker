@@ -1,9 +1,11 @@
 package com.illumina.controller;
 
 
+import com.illumina.service.impl.OntologyServiceImpl;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.illumina.model.OntologyNode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import java.util.List;
 @Api(value="Ontology", description = "Ontology API")
 public class OntologyController {
 
+    @Autowired
     OntologyService ontologyService;
 
     @RequestMapping(value="/ont/ontology", method=RequestMethod.POST)
