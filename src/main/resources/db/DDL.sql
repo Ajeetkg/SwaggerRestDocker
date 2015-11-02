@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `ontologydb`.`DOMAIN_ONTOLOGY_MAPPING` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `ontologydb`.`DOMAIN_ONTOLOGY_MAPPING` (
-  `domain_ontology_map_id` VARCHAR(45) NOT NULL,
+  `domain_ontology_map_id` INT NOT NULL,
   `domain_id` INT NOT NULL,
   `ontology_id` INT NOT NULL,
   PRIMARY KEY (`domain_ontology_map_id`, `domain_id`),
@@ -56,3 +56,5 @@ SHOW WARNINGS;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+

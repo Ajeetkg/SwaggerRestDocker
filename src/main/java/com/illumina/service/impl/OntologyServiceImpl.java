@@ -1,6 +1,6 @@
 package com.illumina.service.impl;
 
-import com.illumina.dao.OntologyDao;
+import com.illumina.dao.OntologyNodeDao;
 import com.illumina.model.OntologyNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +17,15 @@ import java.util.List;
 public class OntologyServiceImpl implements OntologyService{
 
     @Autowired
-    OntologyDao ontologyDao;
+    OntologyNodeDao ontologyNodeDao;
 
     @Override
     public OntologyNode addOntologyByDomainId(OntologyNode ontologyNode) {
-        return ontologyDao.addOntologyByDomainId(ontologyNode);
+        return ontologyNodeDao.addOntologyByDomainId(ontologyNode);
     }
 
     @Override
     public List<OntologyNode> getOntologyByDomainId(String domainId) {
-        return ontologyDao.getOntologyByDomainId(domainId);
+        return ontologyNodeDao.getOntologyByDomainId(domainId);
     }
 }

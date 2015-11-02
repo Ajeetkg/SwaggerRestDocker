@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by agupta2 on 10/30/15.
  */
-public interface OntologyDao {
+public interface OntologyNodeDao {
 
     public OntologyNode addOntologyByDomainId(OntologyNode ontologyNode);
 
