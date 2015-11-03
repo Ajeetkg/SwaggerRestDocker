@@ -14,4 +14,6 @@ public interface OntologyService {
 
     public List<OntologyNode> getOntologyByDomainId(String domainId);
 
+    public List<OntologyNode> getMappedOntologyForDomain(String domainId);
+
 }

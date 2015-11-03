@@ -28,4 +28,9 @@ public class OntologyServiceImpl implements OntologyService{
     public List<OntologyNode> getOntologyByDomainId(String domainId) {
         return ontologyNodeDao.getOntologyByDomainId(domainId);
     }
+
+    @Override
+    public List<OntologyNode> getMappedOntologyForDomain(String domainId){
+        return ontologyNodeDao.getMappedOntologyForDomain(domainId);
+    }
 }

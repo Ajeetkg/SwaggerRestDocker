@@ -1,6 +1,7 @@
 package com.illumina.controller;
 
 
+import com.illumina.model.OntologyResult;
 import com.illumina.service.impl.OntologyServiceImpl;
 import com.illumina.util.Constants;
 import com.wordnik.swagger.annotations.Api;
@@ -47,10 +48,11 @@ public class OntologyController {
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.GET)
     @ApiOperation(httpMethod = Constants.GET, value="Get the mapped ontology for domainId")
-    public ResponseEntity<List<OntologyNode>> getMappedOntologyForDomain(@PathVariable("domainid")String domainId){
+    public ResponseEntity<OntologyResult> getMappedOntologyForDomain(@PathVariable("domainid")String domainId){
         logger.info("Mapped Ontology for domain:"+domainId);
-        List<OntologyNode> conceptList = ontologyService.getOntologyByDomainId(domainId);
-        return new ResponseEntity<List<OntologyNode>>(conceptList, HttpStatus.OK);
+        List<OntologyNode> ontologyNodes = ontologyService.getMappedOntologyForDomain(domainId);
+        OntologyResult ontologyResult = new OntologyResult(ontologyNodes, HttpStatus.OK.value());
+        return new ResponseEntity<OntologyResult>(ontologyResult, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.PUT)

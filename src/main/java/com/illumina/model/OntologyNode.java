@@ -3,36 +3,36 @@ package com.illumina.model;
 public class OntologyNode {
 
     private int id;
-    private String content;
+    private String ontologyName;
 
     public OntologyNode() {
     }
 
-    public OntologyNode(int id, String content) {
+    public OntologyNode(int id, String ontologyName) {
         this.id = id;
-        this.content = content;
+        this.ontologyName = ontologyName;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setOntologyName(String ontologyName) {
+        this.ontologyName = ontologyName;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getContent() {
-        return content;
+    public String getOntologyName() {
+        return ontologyName;
     }
 
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("id").append(" : ").append(this.id).append(", ");
-        stringBuilder.append("content").append(" : ").append(this.content);
+        stringBuilder.append("ontologyName").append(" : ").append(this.ontologyName);
 
         return stringBuilder.toString();
     }

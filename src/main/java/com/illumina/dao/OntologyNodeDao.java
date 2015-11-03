@@ -12,5 +12,7 @@ public interface OntologyNodeDao {
 
     public OntologyNode addOntologyByDomainId(OntologyNode ontologyNode);
 
-    public List<OntologyNode> getOntologyByDomainId(String conceptId);
+    public List<OntologyNode> getOntologyByDomainId(String domainid);
+
+    public List<OntologyNode> getMappedOntologyForDomain(String domainid);
 }
