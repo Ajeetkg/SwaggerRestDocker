@@ -28,6 +28,6 @@ public class Ontology {
 
     @Override
     public String toString() {
-        return String.format("Ontology[ontologyId=%d, description='$s', versionId='%s']", ontologyid, description, versionid);
+        return String.format("Ontology[ontologyId=%d, description=%s, versionId=%s]", ontologyid, description, versionid);
     }
 }
