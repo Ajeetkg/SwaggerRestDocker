@@ -1,4 +1,4 @@
-package com.illumina.dao;
+package com.illumina.dao.repo;
 
 
 import com.illumina.model.Ontology;
