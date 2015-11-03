@@ -2,6 +2,7 @@ package com.illumina.controller;
 
 
 import com.illumina.service.impl.OntologyServiceImpl;
+import com.illumina.util.Constants;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.illumina.model.OntologyNode;
@@ -25,19 +26,37 @@ public class OntologyController {
     @Autowired
     OntologyService ontologyService;
 
-    @RequestMapping(value="/ont/ontology", method=RequestMethod.POST)
-    @ApiOperation(httpMethod = "POST", value="Add Ontology to domain")
-    public ResponseEntity<OntologyNode> addOntologyByDomainId(@RequestBody OntologyNode ontologyNode) {
+
+
+    @RequestMapping(value="/ont/ontology", method=RequestMethod.GET)
+    @ApiOperation(httpMethod = Constants.GET, value="Get all the available Ontology")
+    public ResponseEntity<List<OntologyNode>> getOntologyByDomainId(@RequestParam(value = "id", defaultValue = "1") String domainId) {
+        logger.info("Retrieve ontology node for: "+domainId);
+        List<OntologyNode> conceptList = ontologyService.getOntologyByDomainId(domainId);
+        return new ResponseEntity<List<OntologyNode>>(conceptList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/ont/ontology/{domainid}", method=RequestMethod.POST)
+    @ApiOperation(httpMethod = Constants.POST, value="Add Ontology to a domain")
+    public ResponseEntity<OntologyNode> addOntologyByDomainId(@PathVariable("domainid")String domainId, @RequestBody OntologyNode ontologyNode) {
         logger.info("Post ontology node: "+ontologyNode);
         HttpHeaders httpHeaders = new HttpHeaders();
         ontologyNode = ontologyService.addOntologyByDomainId(ontologyNode);
         return new ResponseEntity<OntologyNode>(ontologyNode, httpHeaders, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="/ont/ontology", method=RequestMethod.GET)
-    @ApiOperation(httpMethod = "GET", value="Get the available Ontology")
-    public ResponseEntity<List<OntologyNode>> getOntologyByDomainId(@RequestParam(value = "id", defaultValue = "1") String domainId) {
-        logger.info("Retrieve ontology node for: "+domainId);
+    @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.GET)
+    @ApiOperation(httpMethod = Constants.GET, value="Get the mapped ontology for domainId")
+    public ResponseEntity<List<OntologyNode>> getMappedOntologyForDomain(@PathVariable("domainid")String domainId){
+        logger.info("Mapped Ontology for domain:"+domainId);
+        List<OntologyNode> conceptList = ontologyService.getOntologyByDomainId(domainId);
+        return new ResponseEntity<List<OntologyNode>>(conceptList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.PUT)
+    @ApiOperation(httpMethod = Constants.PUT, value="Replace mapped Ontology for a domainId")
+    public ResponseEntity<List<OntologyNode>> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody List<Integer> ontologyIds){
+        logger.info("Mapped Ontology for domain:"+ontologyIds);
         List<OntologyNode> conceptList = ontologyService.getOntologyByDomainId(domainId);
         return new ResponseEntity<List<OntologyNode>>(conceptList, HttpStatus.OK);
     }

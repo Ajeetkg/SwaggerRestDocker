@@ -16,12 +16,12 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    /*
+/*
     @Bean
     public CommandLineRunner demo(final OntologyRepositoryDao ontologyRepositoryDao){
         return(args) ->{
             ontologyRepositoryDao.save(new Ontology("SnomedCT","1.0"));
         };
     }
-    */
+*/
 }
