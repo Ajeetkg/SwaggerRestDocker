@@ -18,11 +18,11 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @EnableTransactionManagement
-//@EnableJpaRepositories(basePackages = { "com.illumina.db.repo" })
+@EnableJpaRepositories(basePackages = { "com.illumina.db.repo" })
 @Configuration
 public class PersistenceConfig {
-	/*
-	private static final String[] ENTITY_MODEL_PACKAGES = { "com.illumina.platform.ephi.db.model" };
+
+	private static final String[] ENTITY_MODEL_PACKAGES = { "com.illumina.db.model" };
 	// No need to specify `classpath:/`
 	private static final String EHCACHE_CONFIGURATION = "META-INF/ehcache/ehcache.xml";
 
@@ -84,5 +84,5 @@ public class PersistenceConfig {
 		properties.setProperty("net.sf.ehcache.configurationResourceName", EHCACHE_CONFIGURATION);
 		return properties;
 	}
-	*/
+
 }

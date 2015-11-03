@@ -9,9 +9,9 @@ import java.util.Optional;
 
 public interface OntologyRepositoryDao extends JpaRepository<Ontology, Integer> {
 
-    /*
+
     List<Ontology> findByDescription(String description);
 
-    Optional<Ontology> findById(Integer ontologyId);
-    */
+    Optional<Ontology> findByOntologyId(Integer ontologyId);
+
 }

@@ -37,7 +37,7 @@ public class OntologyServiceImpl implements OntologyService{
     @Override
     public OntologyResult getMappedOntologyForDomain(String domainId){
         List<OntologyNode> ontologyNodes = ontologyNodeDao.getMappedOntologyForDomain(domainId);
-        //Optional<Ontology> ontologylist = ontologyRepositoryDao.findById(new Integer(101));
+        //Optional<Ontology> ontologylist = ontologyRepositoryDao.findByOntologyId(new Integer(101));
         //System.out.println(ontologylist);
         OntologyResult ontologyResult = new OntologyResult(ontologyNodes, HttpStatus.OK.value());
         return ontologyResult;
