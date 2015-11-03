@@ -2,7 +2,9 @@ package com.illumina.service.impl;
 
 import com.illumina.dao.OntologyNodeDao;
 import com.illumina.model.OntologyNode;
+import com.illumina.model.OntologyResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import com.illumina.service.OntologyService;
 
@@ -30,7 +32,9 @@ public class OntologyServiceImpl implements OntologyService{
     }
 
     @Override
-    public List<OntologyNode> getMappedOntologyForDomain(String domainId){
-        return ontologyNodeDao.getMappedOntologyForDomain(domainId);
+    public OntologyResult getMappedOntologyForDomain(String domainId){
+        List<OntologyNode> ontologyNodes = ontologyNodeDao.getMappedOntologyForDomain(domainId);
+        OntologyResult ontologyResult = new OntologyResult(ontologyNodes, HttpStatus.OK.value());
+        return ontologyResult;
     }
 }

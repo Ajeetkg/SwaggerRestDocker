@@ -1,6 +1,7 @@
 package com.illumina.service;
 
 import com.illumina.model.OntologyNode;
+import com.illumina.model.OntologyResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,6 @@ public interface OntologyService {
 
     public List<OntologyNode> getOntologyByDomainId(String domainId);
 
-    public List<OntologyNode> getMappedOntologyForDomain(String domainId);
+    public OntologyResult getMappedOntologyForDomain(String domainId);
 
 }

@@ -28,7 +28,7 @@ public class OntologyController {
     OntologyService ontologyService;
 
 
-
+    /*
     @RequestMapping(value="/ont/ontology", method=RequestMethod.GET)
     @ApiOperation(httpMethod = Constants.GET, value="Get all the available Ontology")
     public ResponseEntity<List<OntologyNode>> getOntologyByDomainId(@RequestParam(value = "id", defaultValue = "1") String domainId) {
@@ -36,6 +36,7 @@ public class OntologyController {
         List<OntologyNode> conceptList = ontologyService.getOntologyByDomainId(domainId);
         return new ResponseEntity<List<OntologyNode>>(conceptList, HttpStatus.OK);
     }
+    */
 
     @RequestMapping(value="/ont/ontology/{domainid}", method=RequestMethod.POST)
     @ApiOperation(httpMethod = Constants.POST, value="Add Ontology to a domain")
@@ -48,11 +49,10 @@ public class OntologyController {
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.GET)
     @ApiOperation(httpMethod = Constants.GET, value="Get the mapped ontology for domainId")
-    public ResponseEntity<OntologyResult> getMappedOntologyForDomain(@PathVariable("domainid")String domainId){
+    public OntologyResult getMappedOntologyForDomain(@PathVariable("domainid")String domainId){
         logger.info("Mapped Ontology for domain:"+domainId);
-        List<OntologyNode> ontologyNodes = ontologyService.getMappedOntologyForDomain(domainId);
-        OntologyResult ontologyResult = new OntologyResult(ontologyNodes, HttpStatus.OK.value());
-        return new ResponseEntity<OntologyResult>(ontologyResult, HttpStatus.OK);
+        OntologyResult ontologyResult = ontologyService.getMappedOntologyForDomain(domainId);
+        return ontologyResult;
     }
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.PUT)

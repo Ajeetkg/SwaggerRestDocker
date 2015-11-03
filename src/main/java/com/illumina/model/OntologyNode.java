@@ -33,7 +33,6 @@ public class OntologyNode {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("id").append(" : ").append(this.id).append(", ");
         stringBuilder.append("ontologyName").append(" : ").append(this.ontologyName);
-
         return stringBuilder.toString();
     }
 
