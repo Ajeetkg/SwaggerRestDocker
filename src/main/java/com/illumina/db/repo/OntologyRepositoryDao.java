@@ -12,6 +12,6 @@ public interface OntologyRepositoryDao extends JpaRepository<Ontology, Integer> 
 
     List<Ontology> findByDescription(String description);
 
-    Optional<Ontology> findByOntologyId(Integer ontologyId);
+    Optional<Ontology> findByOntologyid(Integer ontologyid);
 
 }

@@ -13,21 +13,21 @@ public class Ontology {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ontologyId;
+    private int ontologyid;
 
     private String description;
-    private String versionId;
+    private String versionid;
 
     protected Ontology() {
     }
 
-    public Ontology(String description, String versionId) {
+    public Ontology(String description, String versionid) {
         this.description = description;
-        this.versionId = versionId;
+        this.versionid = versionid;
     }
 
     @Override
     public String toString() {
-        return String.format("Ontology[ontologyId=%d, description='$s', versionId='%s']", ontologyId, description, versionId);
+        return String.format("Ontology[ontologyId=%d, description='$s', versionId='%s']", ontologyid, description, versionid);
     }
 }

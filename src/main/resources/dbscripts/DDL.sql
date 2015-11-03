@@ -26,10 +26,10 @@ DROP TABLE IF EXISTS `ontologydb`.`ONTOLOGY` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `ontologydb`.`ONTOLOGY` (
-  `ontology_id` INT NOT NULL,
+  `ontologyid` INT NOT NULL,
   `description` VARCHAR(255) NOT NULL,
-  `version_id` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ontology_id`));
+  `versionid` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ontologyid`));
 
 SHOW WARNINGS;
 
@@ -40,21 +40,19 @@ DROP TABLE IF EXISTS `ontologydb`.`DOMAIN_ONTOLOGY_MAPPING` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `ontologydb`.`DOMAIN_ONTOLOGY_MAPPING` (
-  `domain_ontology_map_id` INT NOT NULL,
-  `domain_id` INT NOT NULL,
-  `ontology_id` INT NOT NULL,
-  PRIMARY KEY (`domain_ontology_map_id`, `domain_id`),
-  CONSTRAINT `ontology_id`
-    FOREIGN KEY (`ontology_id`)
-    REFERENCES `ontologydb`.`ONTOLOGY` (`ontology_id`)
+  `mappingid` INT NOT NULL,
+  `domainid` INT NOT NULL,
+  `ontologyid` INT NOT NULL,
+  PRIMARY KEY (`mappingid`, `domainid`),
+  CONSTRAINT `ontologyid`
+  FOREIGN KEY (`ontologyid`)
+  REFERENCES `ontologydb`.`ONTOLOGY` (`ontologyid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-

@@ -9,21 +9,21 @@ public class DomainOntologyMapping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int domainOntologyMapId;
+    private int mappingid;
 
-    private int domainId;
-    private int ontologyId;
+    private int domainid;
+    private int ontologyid;
 
     protected DomainOntologyMapping() {
     }
 
-    public DomainOntologyMapping(int domainId, int ontologyId) {
-        this.domainId = domainId;
-        this.ontologyId = ontologyId;
+    public DomainOntologyMapping(int domainid, int ontologyid) {
+        this.domainid = domainid;
+        this.ontologyid = ontologyid;
     }
 
     @Override
     public String toString() {
-        return String.format("DomainOntologyMapping[mappedId=%d, domainId=%d, ontologyId=%d]", domainOntologyMapId, domainId, ontologyId);
+        return String.format("DomainOntologyMapping[mappingid=%d, domainid=%d, ontologyid=%d]", mappingid, domainid, ontologyid);
     }
 }
