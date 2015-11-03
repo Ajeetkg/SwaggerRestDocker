@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * Created by agupta2 on 10/30/15.
- */
 
 @Service
 public class OntologyServiceImpl implements OntologyService{
@@ -47,15 +44,30 @@ public class OntologyServiceImpl implements OntologyService{
 
         List<Ontology> listOntology = ontologyRepo.findAll();
         List<DomainOntologyMapping> domainOntologyMappings = domainOntMappingRepo.findByDomainid(new Integer(domainId));
-        System.out.println(listOntology);
-        System.out.println(domainOntologyMappings);
-        List<Ontology> finalOntology = new ArrayList<>();
-
-        finalOntology = getOntologyForDomain(domainOntologyMappings,listOntology);
+        List<Ontology> finalOntology = getOntologyForDomain(domainOntologyMappings, listOntology);
         OntologyResult ontologyResult = new OntologyResult(finalOntology, HttpStatus.OK.value());
         return ontologyResult;
     }
 
+    @Override
+    public OntologyResult updateOntologyForDomain(String domainid, List<String> listOntologyid){
+        domainOntMappingRepo.deleteByDomainid(new Integer(domainid));
+        List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,listOntologyid);
+        //List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
+        OntologyResult ontologyResult = new OntologyResult(HttpStatus.OK.value());
+        return ontologyResult;
+    }
+
+    private List<DomainOntologyMapping> getDomainOntologyMapping(String domainid, List<String> listOntologyid ){
+        List<DomainOntologyMapping> domainOntologyMappings = new ArrayList<>();
+        DomainOntologyMapping domainOntologyMapping = new DomainOntologyMapping();
+        for(String ontologyid: listOntologyid){
+            domainOntologyMapping.setDomainid(new Integer(domainid));
+            domainOntologyMapping.setOntologyid(new Integer(ontologyid));
+            domainOntologyMappings.add(domainOntologyMapping);
+        }
+        return domainOntologyMappings;
+    }
     private List<Ontology> getOntologyForDomain(List<DomainOntologyMapping> domainOntologyMappings,  List<Ontology> listOntology){
         List<Ontology> finalOntology = new ArrayList<>();
         for(DomainOntologyMapping domainOntologyMapping: domainOntologyMappings){
@@ -68,4 +80,5 @@ public class OntologyServiceImpl implements OntologyService{
         }
         return finalOntology;
     }
+
 }

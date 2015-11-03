@@ -11,4 +11,7 @@ import java.util.Optional;
  */
 public interface DomainOntMappingRepo extends JpaRepository<DomainOntologyMapping, Integer> {
     List<DomainOntologyMapping> findByDomainid(Integer domainid);
+    void deleteByDomainid(Integer domainid);
+
+
 }

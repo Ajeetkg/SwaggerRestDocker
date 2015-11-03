@@ -10,23 +10,26 @@ import java.util.List;
  * Created by agupta2 on 11/3/15.
  */
 public class OntologyResult {
-    List<Ontology> list;
+    List<Ontology> listOntology;
     Integer status;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public OntologyResult(){}
 
-    public OntologyResult(List<Ontology> list, Integer status){
-        this.list = list;
+    public OntologyResult(List<Ontology> listOntology, Integer status){
+        this.listOntology = listOntology;
         this.status=status;
     }
 
-    public List<Ontology> getList() {
-        return list;
+    public OntologyResult(Integer status){
+        this.status=status;
+    }
+    public List<Ontology> getListOntology() {
+        return listOntology;
     }
 
-    public void setList(List<Ontology> list) {
-        this.list = list;
+    public void setListOntology(List<Ontology> listOntology) {
+        this.listOntology = listOntology;
     }
 
     public Integer getStatus() {
@@ -41,7 +44,7 @@ public class OntologyResult {
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("status").append(" : ").append(this.status).append(", ");
-        stringBuilder.append("list").append(" : ").append(list);
+        stringBuilder.append("listOntology").append(" : ").append(listOntology);
         logger.info("OntologyResult:    "+stringBuilder.toString());
         return stringBuilder.toString();
     }

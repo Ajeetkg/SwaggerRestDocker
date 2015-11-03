@@ -1,6 +1,10 @@
 package com.illumina.controller;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.illumina.db.model.DomainOntologyMapping;
+import com.illumina.db.model.Ontology;
 import com.illumina.domain.OntologyResult;
 import com.illumina.util.Constants;
 import com.wordnik.swagger.annotations.Api;
@@ -15,6 +19,8 @@ import com.illumina.service.OntologyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.bind.util.JAXBSource;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,7 +41,7 @@ public class OntologyController {
         List<OntologyNode> conceptList = ontologyService.getOntologyByDomainId(domainId);
         return new ResponseEntity<List<OntologyNode>>(conceptList, HttpStatus.OK);
     }
-    */
+
 
     @RequestMapping(value="/ont/ontology/{domainid}", method=RequestMethod.POST)
     @ApiOperation(httpMethod = Constants.POST, value="Add Ontology to a domain")
@@ -45,6 +51,7 @@ public class OntologyController {
         ontologyNode = ontologyService.addOntologyByDomainId(ontologyNode);
         return new ResponseEntity<OntologyNode>(ontologyNode, httpHeaders, HttpStatus.CREATED);
     }
+    */
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.GET)
     @ApiOperation(httpMethod = Constants.GET, value="Get the mapped ontology for domainId")
@@ -56,9 +63,11 @@ public class OntologyController {
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.PUT)
     @ApiOperation(httpMethod = Constants.PUT, value="Replace mapped Ontology for a domainId")
-    public ResponseEntity<List<OntologyNode>> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody List<Integer> ontologyIds){
-        logger.info("updateOntologyForDomain.Mapped Ontology for domain:"+ontologyIds);
-        List<OntologyNode> conceptList = ontologyService.getOntologyByDomainId(domainId);
-        return new ResponseEntity<List<OntologyNode>>(conceptList, HttpStatus.OK);
+    public ResponseEntity<OntologyResult> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody Ontology ontology){
+        logger.info("updateOntologyForDomain.Mapped Ontology for domain:"+ontology);
+        List<String> listOntologyid = new ArrayList<>();
+        listOntologyid.add(ontology.getOntologyid()+"");
+        OntologyResult ontologyResult  = ontologyService.updateOntologyForDomain(domainId, listOntologyid);
+        return new ResponseEntity<>(ontologyResult, HttpStatus.OK);
     }
 }

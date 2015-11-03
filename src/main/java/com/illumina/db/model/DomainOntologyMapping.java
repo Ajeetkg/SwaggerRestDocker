@@ -16,7 +16,7 @@ public class DomainOntologyMapping {
     private int domainid;
     private int ontologyid;
 
-    protected DomainOntologyMapping() {
+    public DomainOntologyMapping() {
     }
 
     public DomainOntologyMapping(int domainid, int ontologyid) {
