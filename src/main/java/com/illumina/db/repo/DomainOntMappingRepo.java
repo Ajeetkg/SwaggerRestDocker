@@ -8,6 +8,6 @@ import java.util.Optional;
 /**
  * Created by agupta2 on 11/3/15.
  */
-public interface DomainOntMappingRepository extends JpaRepository<DomainOntologyMapping, Integer> {
+public interface DomainOntMappingRepo extends JpaRepository<DomainOntologyMapping, Integer> {
     Optional<DomainOntologyMapping> findByDomainid(Integer domainid);
 }

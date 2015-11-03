@@ -3,8 +3,8 @@ package com.illumina.service.impl;
 import com.illumina.dao.OntologyNodeDao;
 import com.illumina.db.model.DomainOntologyMapping;
 import com.illumina.db.model.Ontology;
-import com.illumina.db.repo.DomainOntMappingRepository;
-import com.illumina.db.repo.OntologyRepository;
+import com.illumina.db.repo.DomainOntMappingRepo;
+import com.illumina.db.repo.OntologyRepo;
 import com.illumina.domain.OntologyNode;
 import com.illumina.domain.OntologyResult;
 import com.illumina.service.OntologyService;
@@ -27,10 +27,10 @@ public class OntologyServiceImpl implements OntologyService{
     OntologyNodeDao ontologyNodeDao;
 
     @Autowired
-    OntologyRepository ontologyRepository;
+    OntologyRepo ontologyRepo;
 
     @Autowired
-    DomainOntMappingRepository domainOntMappingRepository;
+    DomainOntMappingRepo domainOntMappingRepo;
 
     @Override
     public OntologyNode addOntologyByDomainId(OntologyNode ontologyNode) {
@@ -45,10 +45,10 @@ public class OntologyServiceImpl implements OntologyService{
     @Override
     public OntologyResult getMappedOntologyForDomain(String domainId){
         List<OntologyNode> ontologyNodes = ontologyNodeDao.getMappedOntologyForDomain(domainId);
-        Optional<Ontology> ontologylist = ontologyRepository.findByOntologyid(new Integer(101));
-        List<Ontology> list = ontologyRepository.findAll();
+        Optional<Ontology> ontologylist = ontologyRepo.findByOntologyid(new Integer(101));
+        List<Ontology> list = ontologyRepo.findAll();
 
-        List<DomainOntologyMapping> domainOntologyMappings = domainOntMappingRepository.findAll();
+        List<DomainOntologyMapping> domainOntologyMappings = domainOntMappingRepo.findAll();
         System.out.println(ontologylist);
         System.out.println(list);
         System.out.println(domainOntologyMappings);

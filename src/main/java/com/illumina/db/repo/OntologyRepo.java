@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface OntologyRepository extends JpaRepository<Ontology, Integer> {
+public interface OntologyRepo extends JpaRepository<Ontology, Integer> {
 
 
     List<Ontology> findByDescription(String description);
