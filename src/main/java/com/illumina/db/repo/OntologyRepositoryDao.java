@@ -1,15 +1,17 @@
-package com.illumina.dao.repo;
+package com.illumina.db.repo;
 
 
-import com.illumina.model.Ontology;
+import com.illumina.db.model.Ontology;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-import java.util.Optional;
+
 import java.util.List;
+import java.util.Optional;
 
 public interface OntologyRepositoryDao extends JpaRepository<Ontology, Integer> {
 
+    /*
     List<Ontology> findByDescription(String description);
 
     Optional<Ontology> findById(Integer ontologyId);
+    */
 }

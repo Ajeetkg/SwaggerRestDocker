@@ -1,7 +1,7 @@
 package com.illumina.dao.impl;
 
 import com.illumina.dao.OntologyNodeDao;
-import com.illumina.model.OntologyNode;
+import com.illumina.domain.OntologyNode;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

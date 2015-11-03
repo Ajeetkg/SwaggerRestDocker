@@ -1,12 +1,11 @@
 package com.illumina.controller;
 
 
-import com.illumina.model.OntologyResult;
-import com.illumina.service.impl.OntologyServiceImpl;
+import com.illumina.domain.OntologyResult;
 import com.illumina.util.Constants;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
-import com.illumina.model.OntologyNode;
+import com.illumina.domain.OntologyNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

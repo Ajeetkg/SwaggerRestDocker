@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "com.illumina.controller" })
+//@EnableJpaRepositories(basePackages = { "com.illumina.db.repo" })
 @Configuration
 public class PersistenceConfig {
 	/*

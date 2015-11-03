@@ -1,4 +1,4 @@
-package com.illumina.model;
+package com.illumina.domain;
 
 public class OntologyNode {
 
