@@ -1,27 +1,32 @@
 package com.illumina.domain;
 
+import com.illumina.db.model.Ontology;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 /**
  * Created by agupta2 on 11/3/15.
  */
 public class OntologyResult {
-    List<OntologyNode> ontologyNodes;
+    List<Ontology> list;
     Integer status;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public OntologyResult(){}
 
-    public OntologyResult(List<OntologyNode> ontologyNodes, Integer status){
-        this.ontologyNodes=ontologyNodes;
+    public OntologyResult(List<Ontology> list, Integer status){
+        this.list = list;
         this.status=status;
     }
 
-    public List<OntologyNode> getOntologyNodes() {
-        return ontologyNodes;
+    public List<Ontology> getList() {
+        return list;
     }
 
-    public void setOntologyNodes(List<OntologyNode> ontologyNodes) {
-        this.ontologyNodes = ontologyNodes;
+    public void setList(List<Ontology> list) {
+        this.list = list;
     }
 
     public Integer getStatus() {
@@ -36,13 +41,14 @@ public class OntologyResult {
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("status").append(" : ").append(this.status).append(", ");
-        stringBuilder.append("OntologyNode").append(" : ").append(printOntologyNodes(this.ontologyNodes));
+        stringBuilder.append("list").append(" : ").append(list);
+        logger.info("OntologyResult:    "+stringBuilder.toString());
         return stringBuilder.toString();
     }
 
-    private String printOntologyNodes(List<OntologyNode> ontologyNodes){
+    private String printOntologyList(List<Ontology> listOntology){
         StringBuilder stringBuilder = new StringBuilder();
-        ontologyNodes.forEach((ontologyNode) -> stringBuilder.append(ontologyNode).append(","));
+        listOntology.forEach((ontology) -> stringBuilder.append(ontology).append(","));
         return stringBuilder.toString();
     }
 }

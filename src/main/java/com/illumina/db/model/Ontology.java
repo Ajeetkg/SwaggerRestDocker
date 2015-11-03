@@ -28,6 +28,36 @@ public class Ontology {
 
     @Override
     public String toString() {
-        return String.format("Ontology[ontologyId=%d, description=%s, versionId=%s]", ontologyid, description, versionid);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("ontologyid").append(":").append(this.ontologyid).append(", ");
+        stringBuilder.append("description").append(":").append(this.description).append(", ");
+        stringBuilder.append("versionid").append(":").append(this.versionid);
+        return stringBuilder.toString();
     }
+
+    public int getOntologyid() {
+        return ontologyid;
+    }
+
+    public void setOntologyid(int ontologyid) {
+        this.ontologyid = ontologyid;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getVersionid() {
+        return versionid;
+    }
+
+    public void setVersionid(String versionid) {
+        this.versionid = versionid;
+    }
+
+
 }

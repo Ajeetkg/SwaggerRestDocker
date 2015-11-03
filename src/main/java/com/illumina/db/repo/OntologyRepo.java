@@ -12,6 +12,6 @@ public interface OntologyRepo extends JpaRepository<Ontology, Integer> {
 
     List<Ontology> findByDescription(String description);
 
-    Optional<Ontology> findByOntologyid(Integer ontologyid);
+    List<Ontology> findByOntologyid(Integer ontologyid);
 
 }
