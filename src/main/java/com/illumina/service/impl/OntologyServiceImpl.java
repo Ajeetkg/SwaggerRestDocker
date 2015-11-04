@@ -1,11 +1,9 @@
 package com.illumina.service.impl;
 
-import com.illumina.dao.OntologyNodeDao;
 import com.illumina.db.model.DomainOntologyMapping;
 import com.illumina.db.model.Ontology;
 import com.illumina.db.repo.DomainOntMappingRepo;
 import com.illumina.db.repo.OntologyRepo;
-import com.illumina.domain.OntologyNode;
 import com.illumina.domain.OntologyRequest;
 import com.illumina.domain.OntologyResult;
 import com.illumina.exception.OntologyException;
@@ -24,8 +22,7 @@ import java.util.List;
 @Service
 public class OntologyServiceImpl implements OntologyService{
 
-    @Autowired
-    OntologyNodeDao ontologyNodeDao;
+
 
     @Autowired
     OntologyRepo ontologyRepo;
@@ -33,15 +30,6 @@ public class OntologyServiceImpl implements OntologyService{
     @Autowired
     DomainOntMappingRepo domainOntMappingRepo;
 
-    @Override
-    public OntologyNode addOntologyByDomainId(OntologyNode ontologyNode) {
-        return ontologyNodeDao.addOntologyByDomainId(ontologyNode);
-    }
-
-    @Override
-    public List<OntologyNode> getOntologyByDomainId(String domainId) {
-        return ontologyNodeDao.getOntologyByDomainId(domainId);
-    }
 
     @Override
     public OntologyResult getMappedOntologyForDomain(String domainId) throws OntologyException{
@@ -76,7 +64,7 @@ public class OntologyServiceImpl implements OntologyService{
 
     private List<DomainOntologyMapping> getDomainOntologyMapping(String domainid, OntologyRequest request ){
         List<DomainOntologyMapping> domainOntologyMappings = new ArrayList<>();
-        DomainOntologyMapping domainOntologyMapping = new DomainOntologyMapping();
+        DomainOntologyMapping domainOntologyMapping;
         List<Ontology> listOntology = request.getListOntology();
         for(Ontology ontology: listOntology){
             domainOntologyMapping = new DomainOntologyMapping();
@@ -89,7 +77,7 @@ public class OntologyServiceImpl implements OntologyService{
 
     private List<DomainOntologyMapping> getDomainOntologyMappingByOntologyIds(String domainid, OntologyRequest request ){
         List<DomainOntologyMapping> domainOntologyMappings = new ArrayList<>();
-        DomainOntologyMapping domainOntologyMapping = new DomainOntologyMapping();
+        DomainOntologyMapping domainOntologyMapping;
         List<Integer> listOntologyid = request.getListOntologyid();
         for(Integer ontologyid: listOntologyid){
             domainOntologyMapping = new DomainOntologyMapping();
