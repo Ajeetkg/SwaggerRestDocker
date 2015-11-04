@@ -1,10 +1,17 @@
 package com.illumina.db.model;
 
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "DOMAIN_ONTOLOGY_MAPPING")
+@DynamicUpdate
+@SelectBeforeUpdate
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 public class DomainOntologyMapping {
 
 
