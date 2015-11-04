@@ -12,6 +12,16 @@ import java.util.List;
 public class OntologyRequest {
     List<Ontology> listOntology;
 
+    public List<Integer> getListOntologyid() {
+        return listOntologyid;
+    }
+
+    public void setListOntologyid(List<Integer> listOntologyid) {
+        this.listOntologyid = listOntologyid;
+    }
+
+    List<Integer> listOntologyid;
+
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public OntologyRequest() {

@@ -56,7 +56,8 @@ public class OntologyServiceImpl implements OntologyService{
     @Transactional
     public OntologyResult updateOntologyForDomain(String domainid, OntologyRequest request) throws OntologyException{
         domainOntMappingRepo.deleteAllByDomainid(new Integer(domainid));
-        List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,request);
+        //List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,request);
+        List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMappingByOntologyIds(domainid,request);
         List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
         OntologyResult ontologyResult = new OntologyResult(HttpStatus.OK.value());
         return ontologyResult;
@@ -70,6 +71,19 @@ public class OntologyServiceImpl implements OntologyService{
             domainOntologyMapping = new DomainOntologyMapping();
             domainOntologyMapping.setDomainid(new Integer(domainid));
             domainOntologyMapping.setOntologyid(ontology.getOntologyid());
+            domainOntologyMappings.add(domainOntologyMapping);
+        }
+        return domainOntologyMappings;
+    }
+
+    private List<DomainOntologyMapping> getDomainOntologyMappingByOntologyIds(String domainid, OntologyRequest request ){
+        List<DomainOntologyMapping> domainOntologyMappings = new ArrayList<>();
+        DomainOntologyMapping domainOntologyMapping = new DomainOntologyMapping();
+        List<Integer> listOntologyid = request.getListOntologyid();
+        for(Integer ontologyid: listOntologyid){
+            domainOntologyMapping = new DomainOntologyMapping();
+            domainOntologyMapping.setDomainid(new Integer(domainid));
+            domainOntologyMapping.setOntologyid(ontologyid);
             domainOntologyMappings.add(domainOntologyMapping);
         }
         return domainOntologyMappings;

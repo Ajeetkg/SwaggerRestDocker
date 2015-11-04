@@ -62,6 +62,15 @@ public class OntologyController {
         return new ResponseEntity<>(ontologyResult, HttpStatus.OK);
     }
 
+    /*
+    @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.PUT)
+     @ApiOperation(httpMethod = Constants.PUT, value="Replace mapped Ontology for a domainId")
+     public ResponseEntity<OntologyResult> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody OntologyRequest request){
+        logger.info("updateOntologyForDomain.Mapped Ontology for domain:"+request);
+        OntologyResult ontologyResult  = ontologyService.updateOntologyForDomain(domainId, request);
+        return new ResponseEntity<>(ontologyResult, HttpStatus.OK);
+    }*/
+
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.PUT)
     @ApiOperation(httpMethod = Constants.PUT, value="Replace mapped Ontology for a domainId")
     public ResponseEntity<OntologyResult> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody OntologyRequest request){
