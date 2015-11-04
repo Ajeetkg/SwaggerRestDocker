@@ -6,6 +6,7 @@ import com.illumina.db.model.Ontology;
 import com.illumina.db.repo.DomainOntMappingRepo;
 import com.illumina.db.repo.OntologyRepo;
 import com.illumina.domain.OntologyNode;
+import com.illumina.domain.OntologyRequest;
 import com.illumina.domain.OntologyResult;
 import com.illumina.exception.OntologyException;
 import com.illumina.service.OntologyService;
@@ -53,21 +54,22 @@ public class OntologyServiceImpl implements OntologyService{
 
     @Override
     @Transactional
-    public OntologyResult updateOntologyForDomain(String domainid, List<String> listOntologyid) throws OntologyException{
+    public OntologyResult updateOntologyForDomain(String domainid, OntologyRequest request) throws OntologyException{
         domainOntMappingRepo.deleteAllByDomainid(new Integer(domainid));
-        List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,listOntologyid);
+        List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,request);
         List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
         OntologyResult ontologyResult = new OntologyResult(HttpStatus.OK.value());
         return ontologyResult;
     }
 
-    private List<DomainOntologyMapping> getDomainOntologyMapping(String domainid, List<String> listOntologyid ){
+    private List<DomainOntologyMapping> getDomainOntologyMapping(String domainid, OntologyRequest request ){
         List<DomainOntologyMapping> domainOntologyMappings = new ArrayList<>();
         DomainOntologyMapping domainOntologyMapping = new DomainOntologyMapping();
-        for(String ontologyid: listOntologyid){
+        List<Ontology> listOntology = request.getListOntology();
+        for(Ontology ontology: listOntology){
+            domainOntologyMapping = new DomainOntologyMapping();
             domainOntologyMapping.setDomainid(new Integer(domainid));
-            domainOntologyMapping.setOntologyid(new Integer(ontologyid));
-            domainOntologyMapping.setMappingid(12);
+            domainOntologyMapping.setOntologyid(ontology.getOntologyid());
             domainOntologyMappings.add(domainOntologyMapping);
         }
         return domainOntologyMappings;

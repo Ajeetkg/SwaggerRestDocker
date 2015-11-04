@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.illumina.db.model.DomainOntologyMapping;
 import com.illumina.db.model.Ontology;
+import com.illumina.domain.OntologyRequest;
 import com.illumina.domain.OntologyResult;
 import com.illumina.util.Constants;
 import com.wordnik.swagger.annotations.Api;
@@ -63,11 +64,9 @@ public class OntologyController {
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.PUT)
     @ApiOperation(httpMethod = Constants.PUT, value="Replace mapped Ontology for a domainId")
-    public ResponseEntity<OntologyResult> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody Ontology ontology){
-        logger.info("updateOntologyForDomain.Mapped Ontology for domain:"+ontology);
-        List<String> listOntologyid = new ArrayList<>();
-        listOntologyid.add(ontology.getOntologyid()+"");
-        OntologyResult ontologyResult  = ontologyService.updateOntologyForDomain(domainId, listOntologyid);
+    public ResponseEntity<OntologyResult> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody OntologyRequest request){
+        logger.info("updateOntologyForDomain.Mapped Ontology for domain:"+request);
+        OntologyResult ontologyResult  = ontologyService.updateOntologyForDomain(domainId, request);
         return new ResponseEntity<>(ontologyResult, HttpStatus.OK);
     }
 }

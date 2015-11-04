@@ -2,6 +2,7 @@ package com.illumina.service;
 
 import com.illumina.db.model.DomainOntologyMapping;
 import com.illumina.domain.OntologyNode;
+import com.illumina.domain.OntologyRequest;
 import com.illumina.domain.OntologyResult;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface OntologyService {
 
     public OntologyResult getMappedOntologyForDomain(String domainId);
 
-    public OntologyResult updateOntologyForDomain(String domainId, List<String> listOntologyid);
+    public OntologyResult updateOntologyForDomain(String domainId, OntologyRequest request);
 
 
 }
