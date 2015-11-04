@@ -1,4 +1,4 @@
-package com.illumina.controller;
+package com.illumina.config;
 
 import com.mangofactory.swagger.core.SwaggerPathProvider;
 import org.springframework.beans.factory.annotation.Autowired;

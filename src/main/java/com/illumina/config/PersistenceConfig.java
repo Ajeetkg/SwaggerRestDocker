@@ -1,4 +1,4 @@
-package com.illumina.controller;
+package com.illumina.config;
 
 import org.hibernate.cache.ehcache.EhCacheRegionFactory;
 import org.hibernate.dialect.MySQL5InnoDBDialect;

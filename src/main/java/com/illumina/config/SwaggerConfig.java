@@ -1,4 +1,4 @@
-package com.illumina.controller;
+package com.illumina.config;
 
 
 import com.mangofactory.swagger.configuration.JacksonScalaSupport;
