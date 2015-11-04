@@ -7,6 +7,7 @@ import com.illumina.db.repo.DomainOntMappingRepo;
 import com.illumina.db.repo.OntologyRepo;
 import com.illumina.domain.OntologyNode;
 import com.illumina.domain.OntologyResult;
+import com.illumina.exception.OntologyException;
 import com.illumina.service.OntologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,7 @@ public class OntologyServiceImpl implements OntologyService{
     }
 
     @Override
-    public OntologyResult getMappedOntologyForDomain(String domainId){
+    public OntologyResult getMappedOntologyForDomain(String domainId) throws OntologyException{
 
         List<Ontology> listOntology = ontologyRepo.findAll();
         List<DomainOntologyMapping> domainOntologyMappings = domainOntMappingRepo.findByDomainid(new Integer(domainId));
@@ -50,7 +51,7 @@ public class OntologyServiceImpl implements OntologyService{
     }
 
     @Override
-    public OntologyResult updateOntologyForDomain(String domainid, List<String> listOntologyid){
+    public OntologyResult updateOntologyForDomain(String domainid, List<String> listOntologyid) throws OntologyException{
         domainOntMappingRepo.deleteByDomainid(new Integer(domainid));
         List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,listOntologyid);
         //List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
