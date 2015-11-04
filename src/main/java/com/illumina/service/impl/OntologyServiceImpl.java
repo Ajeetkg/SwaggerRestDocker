@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +52,9 @@ public class OntologyServiceImpl implements OntologyService{
     }
 
     @Override
+    @Transactional
     public OntologyResult updateOntologyForDomain(String domainid, List<String> listOntologyid) throws OntologyException{
-        domainOntMappingRepo.deleteByDomainid(new Integer(domainid));
+        domainOntMappingRepo.deleteAllByDomainid(new Integer(domainid));
         List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,listOntologyid);
         //List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
         OntologyResult ontologyResult = new OntologyResult(HttpStatus.OK.value());
