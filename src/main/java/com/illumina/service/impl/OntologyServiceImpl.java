@@ -9,6 +9,8 @@ import com.illumina.domain.OntologyResult;
 import com.illumina.exception.OntologyException;
 import com.illumina.service.OntologyService;
 import com.illumina.util.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ import java.util.List;
 @Service
 public class OntologyServiceImpl implements OntologyService{
 
-
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     OntologyRepo ontologyRepo;
@@ -44,7 +46,10 @@ public class OntologyServiceImpl implements OntologyService{
     @Override
     @Transactional
     public OntologyResult updateOntologyForDomain(String domainid, OntologyRequest request) throws OntologyException{
+
+        logger.info("Deleting all mapping for domainid: "+domainid);
         domainOntMappingRepo.deleteAllByDomainid(new Integer(domainid));
+
         List<DomainOntologyMapping> domainOntologyMappings;
 
         if(null!= request.getListOntology()

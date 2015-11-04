@@ -36,6 +36,6 @@ public class OntologyController {
     public ResponseEntity<OntologyResult> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody OntologyRequest request){
         logger.info("updateOntologyForDomain.Mapped Ontology for domain:"+request);
         OntologyResult ontologyResult  = ontologyService.updateOntologyForDomain(domainId, request);
-        return new ResponseEntity<>(ontologyResult, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
