@@ -10,6 +10,7 @@ import com.illumina.domain.OntologyRequest;
 import com.illumina.domain.OntologyResult;
 import com.illumina.exception.OntologyException;
 import com.illumina.service.OntologyService;
+import com.illumina.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -56,8 +57,18 @@ public class OntologyServiceImpl implements OntologyService{
     @Transactional
     public OntologyResult updateOntologyForDomain(String domainid, OntologyRequest request) throws OntologyException{
         domainOntMappingRepo.deleteAllByDomainid(new Integer(domainid));
-        //List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,request);
-        List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMappingByOntologyIds(domainid,request);
+        List<DomainOntologyMapping> domainOntologyMappings;
+
+        if(null!= request.getListOntology()
+                && request.getListOntology().size() > 0){
+            domainOntologyMappings = getDomainOntologyMapping(domainid,request);
+        }else if(null!= request.getListOntologyid()
+                && request.getListOntologyid().size() > 0){
+            domainOntologyMappings = getDomainOntologyMappingByOntologyIds(domainid,request);
+        } else{
+            throw new OntologyException(Constants.ServiceResponse.NO_CONTENT_CODE);
+        }
+
         List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
         OntologyResult ontologyResult = new OntologyResult(HttpStatus.OK.value());
         return ontologyResult;

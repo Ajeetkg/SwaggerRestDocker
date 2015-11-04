@@ -21,6 +21,21 @@ public class OntologyResult {
         this.status=status;
     }
 
+    @Override
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("status").append(" : ").append(this.status).append(", ");
+        stringBuilder.append("listOntology").append(" : ").append(listOntology);
+        logger.info("OntologyResult:    "+stringBuilder.toString());
+        return stringBuilder.toString();
+    }
+
+    private String printOntologyList(List<Ontology> listOntology){
+        StringBuilder stringBuilder = new StringBuilder();
+        listOntology.forEach((ontology) -> stringBuilder.append(ontology).append(","));
+        return stringBuilder.toString();
+    }
+
     public OntologyResult(Integer status){
         this.status=status;
     }
@@ -38,20 +53,5 @@ public class OntologyResult {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("status").append(" : ").append(this.status).append(", ");
-        stringBuilder.append("listOntology").append(" : ").append(listOntology);
-        logger.info("OntologyResult:    "+stringBuilder.toString());
-        return stringBuilder.toString();
-    }
-
-    private String printOntologyList(List<Ontology> listOntology){
-        StringBuilder stringBuilder = new StringBuilder();
-        listOntology.forEach((ontology) -> stringBuilder.append(ontology).append(","));
-        return stringBuilder.toString();
     }
 }

@@ -10,16 +10,8 @@ import java.util.List;
  * Created by agupta2 on 11/4/15.
  */
 public class OntologyRequest {
+
     List<Ontology> listOntology;
-
-    public List<Integer> getListOntologyid() {
-        return listOntologyid;
-    }
-
-    public void setListOntologyid(List<Integer> listOntologyid) {
-        this.listOntologyid = listOntologyid;
-    }
-
     List<Integer> listOntologyid;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -32,6 +24,20 @@ public class OntologyRequest {
 
     }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("listOntology").append(" : ").append(listOntology);
+        logger.info("OntologyRequest:    " + stringBuilder.toString());
+        return stringBuilder.toString();
+    }
+
+    private String printOntologyList(List<Ontology> listOntology) {
+        StringBuilder stringBuilder = new StringBuilder();
+        listOntology.forEach((ontology) -> stringBuilder.append(ontology).append(","));
+        return stringBuilder.toString();
+    }
+
     public List<Ontology> getListOntology() {
         return listOntology;
     }
@@ -40,18 +46,11 @@ public class OntologyRequest {
         this.listOntology = listOntology;
     }
 
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("listOntology").append(" : ").append(listOntology);
-        logger.info("OntologyResult:    " + stringBuilder.toString());
-        return stringBuilder.toString();
+    public List<Integer> getListOntologyid() {
+        return listOntologyid;
     }
 
-    private String printOntologyList(List<Ontology> listOntology) {
-        StringBuilder stringBuilder = new StringBuilder();
-        listOntology.forEach((ontology) -> stringBuilder.append(ontology).append(","));
-        return stringBuilder.toString();
+    public void setListOntologyid(List<Integer> listOntologyid) {
+        this.listOntologyid = listOntologyid;
     }
 }
