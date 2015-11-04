@@ -9,14 +9,14 @@ import java.util.List;
 /**
  * Created by agupta2 on 11/3/15.
  */
-public class OntologyResult {
+public class OntologyResponse {
     List<Ontology> listOntology;
     Integer status;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public OntologyResult(){}
+    public OntologyResponse(){}
 
-    public OntologyResult(List<Ontology> listOntology, Integer status){
+    public OntologyResponse(List<Ontology> listOntology, Integer status){
         this.listOntology = listOntology;
         this.status=status;
     }
@@ -26,7 +26,7 @@ public class OntologyResult {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("status").append(" : ").append(this.status).append(", ");
         stringBuilder.append("listOntology").append(" : ").append(listOntology);
-        logger.info("OntologyResult:    "+stringBuilder.toString());
+        logger.info("OntologyResponse:    "+stringBuilder.toString());
         return stringBuilder.toString();
     }
 
@@ -36,7 +36,7 @@ public class OntologyResult {
         return stringBuilder.toString();
     }
 
-    public OntologyResult(Integer status){
+    public OntologyResponse(Integer status){
         this.status=status;
     }
     public List<Ontology> getListOntology() {

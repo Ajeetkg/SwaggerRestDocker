@@ -2,7 +2,7 @@ package com.illumina.controller;
 
 
 import com.illumina.domain.OntologyRequest;
-import com.illumina.domain.OntologyResult;
+import com.illumina.domain.OntologyResponse;
 import com.illumina.service.OntologyService;
 import com.illumina.util.Constants;
 import com.wordnik.swagger.annotations.Api;
@@ -25,11 +25,11 @@ public class OntologyController {
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.GET)
     @ApiOperation(httpMethod = Constants.GET, value="Get the mapped ontology for domainId")
-    public ResponseEntity<OntologyResult> getMappedOntologyForDomain(@PathVariable("domainid")String domainId){
+    public ResponseEntity<OntologyResponse> getMappedOntologyForDomain(@PathVariable("domainid")String domainId){
         try {
             logger.info("getMappedOntologyForDomain.Mapped Ontology for domain:" + domainId);
-            OntologyResult ontologyResult = ontologyService.getMappedOntologyForDomain(domainId);
-            return new ResponseEntity<>(ontologyResult, HttpStatus.OK);
+            OntologyResponse ontologyResponse = ontologyService.getMappedOntologyForDomain(domainId);
+            return new ResponseEntity<>(ontologyResponse, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -38,11 +38,11 @@ public class OntologyController {
 
     @RequestMapping(value = "/ont/ontology/{domainid}", method=RequestMethod.PUT)
     @ApiOperation(httpMethod = Constants.PUT, value="Replace mapped Ontology for a domainId")
-    public ResponseEntity<OntologyResult> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody OntologyRequest request){
+    public ResponseEntity<OntologyResponse> updateOntologyForDomain(@PathVariable("domainid")String domainId, @RequestBody OntologyRequest request){
 
         try {
             logger.info("updateOntologyForDomain.Mapped Ontology for domain:" + request);
-            OntologyResult ontologyResult  = ontologyService.updateOntologyForDomain(domainId, request);
+            OntologyResponse ontologyResponse = ontologyService.updateOntologyForDomain(domainId, request);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

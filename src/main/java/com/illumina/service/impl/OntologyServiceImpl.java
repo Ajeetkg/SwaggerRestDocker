@@ -5,7 +5,7 @@ import com.illumina.db.model.Ontology;
 import com.illumina.db.repo.DomainOntMappingRepo;
 import com.illumina.db.repo.OntologyRepo;
 import com.illumina.domain.OntologyRequest;
-import com.illumina.domain.OntologyResult;
+import com.illumina.domain.OntologyResponse;
 import com.illumina.exception.OntologyException;
 import com.illumina.service.OntologyService;
 import com.illumina.util.Constants;
@@ -34,18 +34,18 @@ public class OntologyServiceImpl implements OntologyService{
 
 
     @Override
-    public OntologyResult getMappedOntologyForDomain(String domainId) throws OntologyException{
+    public OntologyResponse getMappedOntologyForDomain(String domainId) throws OntologyException{
 
         List<Ontology> listOntology = ontologyRepo.findAll();
         List<DomainOntologyMapping> domainOntologyMappings = domainOntMappingRepo.findByDomainid(new Integer(domainId));
         List<Ontology> finalOntology = getOntologyForDomain(domainOntologyMappings, listOntology);
-        OntologyResult ontologyResult = new OntologyResult(finalOntology, HttpStatus.OK.value());
-        return ontologyResult;
+        OntologyResponse ontologyResponse = new OntologyResponse(finalOntology, HttpStatus.OK.value());
+        return ontologyResponse;
     }
 
     @Override
     @Transactional
-    public OntologyResult updateOntologyForDomain(String domainid, OntologyRequest request) throws OntologyException{
+    public OntologyResponse updateOntologyForDomain(String domainid, OntologyRequest request) throws OntologyException{
 
         logger.info("Deleting all mapping for domainid: "+domainid);
         domainOntMappingRepo.deleteAllByDomainid(new Integer(domainid));
@@ -63,8 +63,8 @@ public class OntologyServiceImpl implements OntologyService{
         }
 
         List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
-        OntologyResult ontologyResult = new OntologyResult(HttpStatus.OK.value());
-        return ontologyResult;
+        OntologyResponse ontologyResponse = new OntologyResponse(HttpStatus.OK.value());
+        return ontologyResponse;
     }
 
     private List<DomainOntologyMapping> getDomainOntologyMapping(String domainid, OntologyRequest request ){

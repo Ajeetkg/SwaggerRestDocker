@@ -1,18 +1,16 @@
 package com.illumina.service;
 
 import com.illumina.domain.OntologyRequest;
-import com.illumina.domain.OntologyResult;
-
-import java.util.List;
+import com.illumina.domain.OntologyResponse;
 
 /**
  * Created by agupta2 on 10/30/15.
  */
 public interface OntologyService {
 
-    public OntologyResult getMappedOntologyForDomain(String domainId);
+    public OntologyResponse getMappedOntologyForDomain(String domainId);
 
-    public OntologyResult updateOntologyForDomain(String domainId, OntologyRequest request);
+    public OntologyResponse updateOntologyForDomain(String domainId, OntologyRequest request);
 
 
 }
