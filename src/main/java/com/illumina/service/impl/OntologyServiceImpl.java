@@ -56,7 +56,7 @@ public class OntologyServiceImpl implements OntologyService{
     public OntologyResult updateOntologyForDomain(String domainid, List<String> listOntologyid) throws OntologyException{
         domainOntMappingRepo.deleteAllByDomainid(new Integer(domainid));
         List<DomainOntologyMapping> domainOntologyMappings = getDomainOntologyMapping(domainid,listOntologyid);
-        //List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
+        List<DomainOntologyMapping> savedMappings = domainOntMappingRepo.save(domainOntologyMappings);
         OntologyResult ontologyResult = new OntologyResult(HttpStatus.OK.value());
         return ontologyResult;
     }
@@ -67,6 +67,7 @@ public class OntologyServiceImpl implements OntologyService{
         for(String ontologyid: listOntologyid){
             domainOntologyMapping.setDomainid(new Integer(domainid));
             domainOntologyMapping.setOntologyid(new Integer(ontologyid));
+            domainOntologyMapping.setMappingid(12);
             domainOntologyMappings.add(domainOntologyMapping);
         }
         return domainOntologyMappings;
