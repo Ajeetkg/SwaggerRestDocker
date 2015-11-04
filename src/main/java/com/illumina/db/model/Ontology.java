@@ -13,9 +13,13 @@ public class Ontology {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ontologyid")
     private int ontologyid;
 
+    @Column(name = "description")
     private String description;
+
+    @Column(name="versionid")
     private String versionid;
 
     protected Ontology() {

@@ -11,9 +11,13 @@ public class DomainOntologyMapping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "mappingid")
     private int mappingid;
 
+    @Column(name = "domainid")
     private int domainid;
+
+    @Column(name="ontologyid")
     private int ontologyid;
 
     public DomainOntologyMapping() {
