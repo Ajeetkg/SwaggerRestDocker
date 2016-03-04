@@ -14,7 +14,7 @@ public class LambdaTest {
         System.out.println("Hello Lambda");
 
         List<User> list = createListOfUsers();
-        //list.stream().
+        lambdaTest();
 
     }
 
@@ -44,9 +44,17 @@ public class LambdaTest {
 
     }
 
-    private void lambdaTest(){
+    private static void lambdaTest(){
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
         List<Integer> list = new ArrayList<>();
+        List<Integer> oddCubes=
+                numbers.stream()
+                        .filter(n -> {return n % 2 != 0;})
+                        .map(n->{return n*n*n;})
+                        .limit(3)
+                        .collect(Collectors.toList());
+
+        oddCubes.stream().forEach(oddcube -> {System.out.println(oddcube);});
         List<Integer> twoEvenSquares =
                 numbers.stream()
                         .filter(n -> {
@@ -66,13 +74,29 @@ public class LambdaTest {
         for(Transaction t: transactions){
             transactionIds.add(t.getId());
         }
+        transactionIds.stream().forEach(transactionId -> {
+           // System.out.println(Transaction::getId);
+        });
+
+        List<String> transactionIds1 =
+                transactions.stream()
+                        .map(Transaction::getId)
+                        .collect(Collectors.toList());
 
     }
 }
 
 class Transaction{
     String id;
+    String name;
 
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name=name;
+    }
     public String getId() {
         return id;
     }
