@@ -10,13 +10,13 @@ import java.util.stream.Collectors;
  */
 public class LambdaTest {
 
-    public static void main(String[] args){
+   /* public static void main(String[] args){
         System.out.println("Hello Lambda");
 
         List<User> list = createListOfUsers();
         lambdaTest();
 
-    }
+    }*/
 
     public static List<User> createListOfUsers(){
         User user1= new User(1, "one");
